@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'aula_virtual'
+    #LOCAL_APPS
+    'aula_virtual',
+    #THIRD_APPS
+    
 ]
 
 MIDDLEWARE = [
@@ -124,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
