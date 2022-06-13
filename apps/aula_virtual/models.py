@@ -6,7 +6,7 @@ class Institucion(models.Model):
     direccion = models.CharField(verbose_name="Dirección", max_length=100)
     email = models.EmailField(verbose_name="Correo Electrónico", max_length=50)
     nombre_institucion = models.CharField(verbose_name="Nombre de la Institución", max_length=30)
-    logo = models.ImageField(upload_to='imagenes/', verbose_name="Logo", )
+    logo = models.ImageField(upload_to='imagenes/', verbose_name="Logo", null=True, blank=True)
     telefono = models.CharField(verbose_name="Teléfono", max_length=10)
     
     class Meta:
@@ -14,7 +14,7 @@ class Institucion(models.Model):
         verbose_name_plural = 'Institución Educativa'
 
     def __str__(self):
-        return f'Dirección: {self.direcion} | correo: {self.email} | institución: {self.nombre_institucion} | telefono: {self.telefono}'
+        return f'Dirección: {self.direccion} | correo: {self.email} | institución: {self.nombre_institucion} | telefono: {self.telefono}'
 
     def delete(self, using=None, keep_parents=False):
         self.imagen.delete(self.imagen.name)
@@ -70,7 +70,7 @@ class Persona(models.Model):
     nombre = models.CharField(verbose_name="Nombre", max_length=45, blank=False, null=False)
     apellido_paterno = models.CharField(verbose_name="Apellido Paterno", max_length=45, blank=False, null=False)
     apellido_materno = models.CharField(verbose_name="Apellido Materno", max_length=45, blank=False, null=False)
-    dni = models.CharField(verbose_name="DNI", max_length=8)
+    dni = models.CharField('dni', max_length=8)
     celular = models.CharField(verbose_name="Celular", max_length=9)
     genero = models.CharField(verbose_name="Género", max_length=3)
     fecha_nacimiento = models.DateField(verbose_name="Fecha de Nacimiento" )
