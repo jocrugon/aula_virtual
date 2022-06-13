@@ -1,16 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %} Login {% endblock titulo %}</title>
+    <title>{% block titulo %} Liceo Trujillo {% endblock titulo %}</title>
     {%block extracss %}
+    <link rel="stylesheet" href="{%static 'css/login.css'%}">
     {% endblock extracss %}
 </head>
-<body>
+<body class="container">
     {% block body%}
-        <h1>login</h1>
+        <div class="login-form">
+            <img id="logoliceologin" src="../static/img/logoLiceo.png" >
+            <h1>Liceo Trujillo</h1>
+            <div class="form-group ">
+                <input type="text" class="form-control" placeholder="Username " id="UserName">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group log-status">
+                <input type="password" class="form-control" placeholder="Password" id="Passwod">
+                <i class="fa fa-lock"></i>
+            </div>
+            <span class="alert">Invalid Credentials</span>
+            <a class="link" href="#">¿Olvidaste tu contraseña?</a>
+            <button type="button" class="log-btn" >Iniciar Sesión</button>
+        </div>
+   
     {% endblock body %}
 
     {% block extrajs %}

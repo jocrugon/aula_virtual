@@ -20,5 +20,7 @@ from apps.aula_virtual.views import Login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('aulavirtual/', include('apps.aula_virtual.urls')),
-    path('login/', Login, name='index'),
+    path('', Login, name='index'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    
 ]
