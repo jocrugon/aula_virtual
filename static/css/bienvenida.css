@@ -1,0 +1,56 @@
+.perfil-usuario {
+    background: linear-gradient(#3FD0F4, transparent);
+    color: #333;
+}
+.perfil-usuario .sombra {
+    position: absolute;
+    display: block;
+    background: linear-gradient(transparent,rgba(0, 0, 0, .5));
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+}
+.perfil-usuario .portada-perfil,
+.perfil-usuario .sombra {
+    border-radius: 0 0 20px 20px;
+}
+.perfil-usuario img {
+    width: 100%;
+}
+.contenedor-perfil {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.perfil-usuario .contenedor-perfil {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.perfil-usuario .portada-perfil {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 20rem;
+    margin-bottom: .5rem;
+}
+.perfil-usuario .avatar-perfil {
+    display: block;
+    width: 230px;
+    height: 230px;
+    background-color: #D9DCF1;
+    position: absolute;
+    bottom: -65px;
+    left: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid #FFFFFF;
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, .2);
+}
+.contenedor-bienvenida{
+    margin: 100px;
+}
