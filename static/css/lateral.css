@@ -1,8 +1,8 @@
 :root{
-    --width:300px;
+    --width:240px;
     --padding: 10px;
     --bgcolor: rgb(52,52,52);
-    --hovercolor: rgb(23,23,23);
+    --hovercolor: rgb(0,12,24);
     --width--collapsed: 50px;
 }
 body{
@@ -22,7 +22,7 @@ body{
 }
 
 #sidemenu{
-    background-color:var(--bgcolor);
+    background-color:#032c55;
     color: white;
     position: fixed;
     height: 100%;
@@ -88,12 +88,12 @@ body{
 }
 
 #sidemenu #profile #photo img{
-    border-radius: 20%;
-    width: 60%;
+    border-radius: 10%;
+    width: 100%;
 }
 
 #sidemenu #profile #photo, #sidemenu #profile #name{
-    font-size: 24px;
+    font-size: 0px;
     padding: var(--padding);
     overflow:hidden;
 }

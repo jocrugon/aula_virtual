@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Aula Virtual{% endblock %}</title>
+    <link rel="stylesheet" href="{%static 'css/lateral.css'%}">
+    {%block extracss %}
+    
+    {% endblock extracss %}
+
+</head>
+<body>
+    
+    <div id="sidemenu" class="menu-collapsed">
+        <div id="header">
+            <div id="title"><span>Alumno</span></div>
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+
+        </div>
+        <div id="profile">
+            <div id="photo"><img src="../../static/img/perfil1.jpg" alt=""></div>
+            <div id="name"><span>{{user.first_name}}  {{user.last_name}} </span></div>
+        </div>
+        <div id="menu-items">
+            <div class="item">
+                <a href="{% url 'inicio' %}">
+                    <div class="icon"> <img src="../../static/img/casa.png" alt=""> </div>
+                    <div class="title"> <span>Bienvenida</span>  </div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="{% url 'perfil' %}">
+                    <div class="icon"> <img src="../../static/img/user.png" alt=""> </div>
+                    <div class="title"> <span>Perfil</span>  </div>
+                </a>
+            </div>
+            <div class="item separator">
+
+            </div>
+            <div class="item">
+                <a href="{% url 'cursos' %}">
+                    <div class="icon"> <img src="../../static/img/libro.png" alt=""> </div>
+                    <div class="title"> <span>Cursos</span>  </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% block body%}
+    
+    {% endblock body %}
+
+    {% block extrajs %}
+    <script>
+        const btn = document.querySelector('#menu-btn');
+        const menu = document.querySelector('#sidemenu');
+
+        btn.addEventListener('click', e =>{
+            menu.classList.toggle('menu-expanded');
+            menu.classList.toggle('menu-collapsed');
+
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
+    </script>
+    {% endblock extrajs %}
+
+</body>
+</html>

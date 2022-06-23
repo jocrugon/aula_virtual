@@ -1,58 +1,13 @@
+{% extends 'aula_virtual/menu.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula Virtual</title>
-    <link rel="stylesheet" href="../../static/css/lateral.css">
-    <link rel="stylesheet" href="../../static/css/bienvenida.css">
+{% block titulo %}Inicio{% endblock %}
 
-</head>
-<body>
-    
-    <div id="sidemenu" class="menu-collapsed">
-        <div id="header">
-            <div id="title"><span>Liceo Trujillo</span></div>
-            <div id="menu-btn">
-                <div class="btn-hamburger"></div>
-                <div class="btn-hamburger"></div>
-                <div class="btn-hamburger"></div>
-            </div>
+{%block extracss %}
+    <link rel="stylesheet" href="{%static 'css/bienvenida.css'%}">
+{% endblock extracss %}
 
-        </div>
-        <div id="profile">
-            <div id="photo"><img src="../../static/img/perfil1.jpg" alt=""></div>
-            <div id="name"><span>{{user.first_name}}  {{user.last_name}} </span></div>
-        </div>
-        <div id="menu-items">
-            <div class="item">
-                <a href="#">
-                    <div class="icon"> <img src="../../static/img/logoLiceo.png" alt=""> </div>
-                    <div class="title"> <span>Bienvenida</span>  </div>
-                </a>
-            </div>
-            <div class="item separator">
-
-            </div>
-            <div class="item">
-                <a href="#">
-                    <div class="icon"> <img src="../../static/img/logoLiceo.png" alt=""> </div>
-                    <div class="title"> <span>Perfil</span>  </div>
-                </a>
-            </div>
-            <div class="item separator">
-
-            </div>
-            <div class="item">
-                <a href="#">
-                    <div class="icon"> <img src="../../static/img/logoLiceo.png" alt=""> </div>
-                    <div class="title"> <span>Cursos</span>  </div>
-                </a>
-            </div>
-        </div>
-    </div>
+{% block body%}
     <div id="main-container">
         <section class="perfil-usuario">
             <div class="contenedor-perfil">
@@ -72,17 +27,4 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ratione aliquid aperiam ipsum, in tenetur delectus. Saepe ad numquam, perferendis blanditiis natus consectetur quae nostrum repellat, magni, possimus corrupti perspiciatis.</p>
         </div>
     </div>
-
-    <script>
-        const btn = document.querySelector('#menu-btn');
-        const menu = document.querySelector('#sidemenu');
-
-        btn.addEventListener('click', e =>{
-            menu.classList.toggle('menu-expanded');
-            menu.classList.toggle('menu-collapsed');
-
-            document.querySelector('body').classList.toggle('body-expanded');
-        });
-    </script>
-</body>
-</html>
+{% endblock body %}

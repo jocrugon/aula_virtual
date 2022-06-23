@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %} Liceo Trujillo {% endblock %}</title>
-    {%block extracss %}
+    <title>Liceo Trujillo</title>
+   
     <link rel="stylesheet" href="{%static 'css/login.css'%}">
-    {% endblock extracss %}
+    
 </head>
 <body class="container">
-    {% block body%}
+    
         <div class="login-form">
             <div id="cabecera-login">
                 <img id="logoliceologin" src="../static/img/logoLiceo.png" >
@@ -29,11 +29,6 @@
                     <button type="submit" class="log-btn" >Iniciar Sesión</button>
             </form>
         </div>
-   
-    {% endblock body %}
 
-    {% block extrajs %}
-    
-    {% endblock extrajs %}
 </body>
 </html>
