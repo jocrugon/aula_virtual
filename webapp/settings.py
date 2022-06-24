@@ -124,15 +124,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-pe'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Lima'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
-LOGIN_REDIRECT_URL = reverse_lazy('bienvenida')
+LOGIN_REDIRECT_URL = reverse_lazy('inicio')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

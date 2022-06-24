@@ -41,7 +41,7 @@ class Nivel(models.Model):
         verbose_name_plural = 'Niveles'
 
     def __str__(self):
-        return f'Nivel: {self.nombre_nivel}'
+        return f'{self.nombre_nivel}'
     
     
 class Grado(models.Model):
@@ -52,7 +52,7 @@ class Grado(models.Model):
         verbose_name_plural = 'Grados'
 
     def __str__(self):
-        return f'Grado: {self.nombre_grado}'
+        return f'{self.nombre_grado}'
 
 
 class Seccion(models.Model):
@@ -63,7 +63,7 @@ class Seccion(models.Model):
         verbose_name_plural = 'Secciones'
 
     def __str__(self):
-        return f'Sección: {self.nombre_seccion}'
+        return f'{self.nombre_seccion}'
 
 
 class Persona(models.Model):
@@ -72,16 +72,20 @@ class Persona(models.Model):
     apellido_materno = models.CharField(verbose_name="Apellido Materno", max_length=45, blank=False, null=False)
     dni = models.CharField('dni', max_length=8)
     celular = models.CharField(verbose_name="Celular", max_length=9)
-    genero = models.CharField(verbose_name="Género", max_length=3)
+    generos = [
+        ('F', 'Femenino'),
+        ('M', 'Masculino')
+    ]
+    genero = models.CharField(verbose_name="Género", choices=generos, max_length=1, default='F')
     fecha_nacimiento = models.DateField(verbose_name="Fecha de Nacimiento" )
-    foto = models.ImageField(upload_to='imagenes/', verbose_name="Foto de Perfil", null=True)
+    foto = models.ImageField(upload_to='imagenes/', verbose_name="Foto de Perfil", null=True, default='images/dfImage.jpg')
     
     class Meta:
         verbose_name = 'Persona'
         verbose_name_plural = 'Personas'
 
     def __str__(self):
-        return f'Nombre: {self.nombre} {self.apellido_paterno} {self.apellido_materno} | DNI: {self.dni}'    
+        return f'{self.nombre} {self.apellido_paterno} {self.apellido_materno} | DNI: {self.dni}'    
     
     def delete(self, using=None, keep_parents=False):
         self.imagen.delete(self.imagen.name)
@@ -97,7 +101,7 @@ class Docente(models.Model):
         verbose_name_plural = 'Docentes'
 
     def __str__(self):
-        return f'Información: {self.persona} | Usuario: {self.usuario}'
+        return f'{self.persona}'
 
 
 class Alumno(models.Model):
@@ -112,7 +116,7 @@ class Alumno(models.Model):
         verbose_name_plural = 'Alumnos'
 
     def __str__(self):
-        return f'Información: {self.persona} | nivel: {self.nivel}, {self.grado} {self.seccion}'
+        return f'{self.persona}'
     
     
 class Curso(models.Model):
@@ -129,7 +133,7 @@ class Curso(models.Model):
         verbose_name_plural = 'Cursos'
 
     def __str__(self):
-        return f'Curso: {self.etiqueta}-{self.nombre_curso} | nivel: {self.nivel}, {self.grado} {self.seccion} | perioro: {self.periodo}'
+        return f'{self.etiqueta}-{self.nombre_curso} | nivel: {self.nivel}, Grado-sección: {self.grado} {self.seccion}'
     
 
 class Detalle_alumno_en_curso(models.Model):
@@ -164,7 +168,7 @@ class Contenido(models.Model):
         verbose_name_plural = 'Contenidos'
 
     def __str__(self):
-        return f'Titulo del contenido: {self.titulo}'
+        return f'{self.titulo}'
     
 
 class Carpeta(models.Model):
@@ -179,13 +183,13 @@ class Carpeta(models.Model):
         verbose_name_plural = 'Carpetas'
 
     def __str__(self):
-        return f'Curso: {self.curso} | Contenido: {self.contenido} | Carpeta: {self.nombre_folder} | ¿Es tarea ?: {self.es_tarea}'   
+        return f'Curso: {self.curso} | Carpeta: {self.nombre_folder} | ¿Es tarea ?: {self.es_tarea}'   
     
      
 class Archivo(models.Model):
     carpeta =  models.ForeignKey(Carpeta, on_delete=models.SET_NULL, null=True, verbose_name="ID Carpeta")
     nombre_archivo = models.CharField(max_length=45, verbose_name="nombre del archivo")
-    ruta_archivo = models.FileField(null=True, verbose_name="Archivo")
+    ruta_archivo = models.FileField(upload_to='archivos/',null=False, verbose_name="Archivo")
     visibilidad_alumno = models.BooleanField(default=False, verbose_name="visibilidad para alumno")
     
     class Meta:

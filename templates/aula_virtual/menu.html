@@ -39,7 +39,7 @@
 
             </div>
             <div class="item">
-                <a href="{% url 'perfil' %}">
+                <a href="{% url 'perfil' user.id%}">
                     <div class="icon"> <img src="../../static/img/user.png" alt=""> </div>
                     <div class="title"> <span>Perfil</span>  </div>
                 </a>
@@ -58,8 +58,6 @@
     {% block body%}
     
     {% endblock body %}
-
-    {% block extrajs %}
     <script>
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');
@@ -71,6 +69,8 @@
             document.querySelector('body').classList.toggle('body-expanded');
         });
     </script>
+    {% block extrajs %}
+
     {% endblock extrajs %}
 
 </body>

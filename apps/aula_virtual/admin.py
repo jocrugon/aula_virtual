@@ -28,45 +28,77 @@ class Detalle_alumno_en_cursoResource(resources.ModelResource):
 class AsistenciaResource(resources.ModelResource):
     class Meta:
         model= Asistencia
-
+        
+class ArchivoResource(resources.ModelResource):
+    class Meta:
+        model= Archivo
 
 
 class PersonaAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
     search_fields = ['dni','nombre','apellido_paterno', 'apellido_materno']
-    
+    list_display = ('id','nombre','apellido_paterno', 'apellido_materno', 'dni', 'fecha_nacimiento', 'genero',)
+
     resource_class= PersonaResource
     
-class DocenteAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
+class DocenteAdmin(ImportExportModelAdmin ,admin.ModelAdmin,):
+    list_display = ('id','persona', 'usuario')
     resource_class= DocenteResource
     
 class AlumnoAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
+    list_display = ('id', 'persona', 'usuario', 'grado', 'seccion', 'nivel')
     resource_class= AlumnoResource
     
 class CursoAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
     search_fields= ['etiqueta','nombre_curso',]
+    list_display = ('id','etiqueta','nombre_curso','nivel','grado','seccion','periodo','docente')
     resource_class= CursoResource
     
 class Detalle_alumno_en_cursoAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
+    list_display=('id','alumno', 'curso')
     resource_class= Detalle_alumno_en_cursoResource
     
 class AsistenciaAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
+    list_display = ('id','detalle_alumno_en_curso', 'fecha')
     resource_class= AsistenciaResource
     
 class InstitucionAdmin(admin.ModelAdmin):
-    list_display = ('nombre_institucion','direccion',)
+    list_display = ('id','nombre_institucion','direccion','telefono',)
 
+class ArchivoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    search_fields= ['nombre_archivo','carpeta',]
+    list_display = ('id','carpeta','nombre_archivo','visibilidad_alumno',)
+    resource_class = ArchivoResource
  
+class CarpetaAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre_folder','curso','contenido','es_tarea')
+    
+class ContenidoAdmin(admin.ModelAdmin):
+    list_display = ('id','titulo',)
+ 
+class GradoAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre_grado',)
+ 
+class SeccionAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre_seccion',)
+    
+class NivelAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre_nivel',)
+    
+class PeriodoAdmin(admin.ModelAdmin):
+    list_display = ('id','fecha_inicio', 'fecha_fin',)
+    
+    
 admin.site.register(Institucion, InstitucionAdmin)
-admin.site.register(Periodo)
-admin.site.register(Nivel)
-admin.site.register(Grado)
-admin.site.register(Seccion)
+admin.site.register(Periodo, PeriodoAdmin)
+admin.site.register(Nivel, NivelAdmin)
+admin.site.register(Grado, GradoAdmin)
+admin.site.register(Seccion, SeccionAdmin)
 admin.site.register(Persona, PersonaAdmin)
-admin.site.register(Docente, PersonaAdmin)
-admin.site.register(Alumno, PersonaAdmin)
-admin.site.register(Curso, PersonaAdmin)
-admin.site.register(Detalle_alumno_en_curso, PersonaAdmin)
-admin.site.register(Asistencia, PersonaAdmin)
-admin.site.register(Contenido)
-admin.site.register(Carpeta)
-admin.site.register(Archivo)
+admin.site.register(Docente, DocenteAdmin)
+admin.site.register(Alumno, AlumnoAdmin)
+admin.site.register(Curso, CursoAdmin)
+admin.site.register(Detalle_alumno_en_curso, Detalle_alumno_en_cursoAdmin)
+admin.site.register(Asistencia, AsistenciaAdmin)
+admin.site.register(Contenido, ContenidoAdmin)
+admin.site.register(Carpeta,CarpetaAdmin)
+admin.site.register(Archivo,ArchivoAdmin)
