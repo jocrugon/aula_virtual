@@ -17,7 +17,7 @@ class Persona(ListView):
     
     def get_queryset(self):
         qs = super(Persona, self).get_queryset()
-        return qs.filter(id=self.kwargs.get('id')).first()
+        return qs.filter(usuario=self.kwargs.get('id')).first()
 
 class Cursos(ListView):
     model = Detalle_alumno_en_curso
