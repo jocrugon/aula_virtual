@@ -16,7 +16,13 @@
     
     <div id="sidemenu" class="menu-collapsed">
         <div id="header">
-            <div id="title"><span>Alumno</span></div>
+            <div id="title"><span>
+                {% if user.is_staff %}
+                    Docente
+                {% else %}
+                    Alumno
+                {% endif %}
+            </span></div>
             <div id="menu-btn">
                 <div class="btn-hamburger"></div>
                 <div class="btn-hamburger"></div>

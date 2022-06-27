@@ -9,13 +9,6 @@ class PersonaResource(resources.ModelResource):
     class Meta:
         model= Persona
 
-class DocenteResource(resources.ModelResource):
-    class Meta:
-        model= Docente
-
-class AlumnoResource(resources.ModelResource):
-    class Meta:
-        model= Alumno
 
 class CursoResource(resources.ModelResource):
     class Meta:
@@ -40,21 +33,14 @@ class PersonaAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
 
     resource_class= PersonaResource
     
-class DocenteAdmin(ImportExportModelAdmin ,admin.ModelAdmin,):
-    list_display = ('id','persona', 'usuario')
-    resource_class= DocenteResource
-    
-class AlumnoAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
-    list_display = ('id', 'persona', 'usuario', 'grado', 'seccion', 'nivel')
-    resource_class= AlumnoResource
     
 class CursoAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
     search_fields= ['etiqueta','nombre_curso',]
-    list_display = ('id','etiqueta','nombre_curso','nivel','grado','seccion','periodo','docente')
+    list_display = ('id','etiqueta','nombre_curso','nivel','grado','seccion','periodo')
     resource_class= CursoResource
     
 class Detalle_alumno_en_cursoAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
-    list_display=('id','alumno', 'curso')
+    list_display=('id','usuario', 'curso')
     resource_class= Detalle_alumno_en_cursoResource
     
 class AsistenciaAdmin(ImportExportModelAdmin ,admin.ModelAdmin):
@@ -94,8 +80,6 @@ admin.site.register(Nivel, NivelAdmin)
 admin.site.register(Grado, GradoAdmin)
 admin.site.register(Seccion, SeccionAdmin)
 admin.site.register(Persona, PersonaAdmin)
-admin.site.register(Docente, DocenteAdmin)
-admin.site.register(Alumno, AlumnoAdmin)
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Detalle_alumno_en_curso, Detalle_alumno_en_cursoAdmin)
 admin.site.register(Asistencia, AsistenciaAdmin)

@@ -67,6 +67,10 @@ class Seccion(models.Model):
 
 
 class Persona(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,verbose_name="ID Usuario")
+    nivel = models.ForeignKey(Nivel, on_delete=models.SET_NULL, null=True,verbose_name="Nivel")
+    grado = models.ForeignKey(Grado, on_delete=models.SET_NULL, null=True,verbose_name="Grado")
+    seccion = models.ForeignKey(Seccion, on_delete=models.SET_NULL, null=True,verbose_name="Seccion")
     nombre = models.CharField(verbose_name="Nombre", max_length=45, blank=False, null=False)
     apellido_paterno = models.CharField(verbose_name="Apellido Paterno", max_length=45, blank=False, null=False)
     apellido_materno = models.CharField(verbose_name="Apellido Materno", max_length=45, blank=False, null=False)
@@ -91,38 +95,10 @@ class Persona(models.Model):
         self.imagen.delete(self.imagen.name)
         super().delete()
 
-
-class Docente(models.Model):
-    persona = models.ForeignKey(Persona, on_delete=models.SET_NULL, null=True,verbose_name="ID Persona")
-    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,verbose_name="ID Usuario")
-
-    class Meta:
-        verbose_name = 'Docente'
-        verbose_name_plural = 'Docentes'
-
-    def __str__(self):
-        return f'{self.persona}'
-
-
-class Alumno(models.Model):
-    persona = models.ForeignKey(Persona, on_delete=models.SET_NULL, null=True,verbose_name="ID Persona")
-    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,verbose_name="ID Usuario")
-    nivel = models.ForeignKey(Nivel, on_delete=models.SET_NULL, null=True,verbose_name="Nivel")
-    grado = models.ForeignKey(Grado, on_delete=models.SET_NULL, null=True,verbose_name="Grado")
-    seccion = models.ForeignKey(Seccion, on_delete=models.SET_NULL, null=True,verbose_name="Seccion")
-
-    class Meta:
-        verbose_name = 'Alumno'
-        verbose_name_plural = 'Alumnos'
-
-    def __str__(self):
-        return f'{self.persona}'
-    
     
 class Curso(models.Model):
     etiqueta = models.CharField(max_length=15, verbose_name="Etiqueta")
     nombre_curso = models.CharField(max_length=100, verbose_name="Nombre del Curso")
-    docente = models.ForeignKey(Docente, on_delete=models.SET_NULL, null=True,verbose_name="ID Docente")
     nivel = models.ForeignKey(Nivel, on_delete=models.SET_NULL, null=True,verbose_name="ID Nivel")
     grado = models.ForeignKey(Grado, on_delete=models.SET_NULL, null=True,verbose_name="ID Grado")
     seccion = models.ForeignKey(Seccion, on_delete=models.SET_NULL, null=True,verbose_name="ID Seccion")
@@ -137,7 +113,7 @@ class Curso(models.Model):
     
 
 class Detalle_alumno_en_curso(models.Model):
-    alumno = models.ForeignKey(Alumno, on_delete=models.SET_NULL, null=True, verbose_name="ID Alumno")
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,verbose_name="ID Usuario")
     curso = models.ForeignKey(Curso, on_delete=models.SET_NULL, null=True, verbose_name="ID Curso")
     
     class Meta:
@@ -145,7 +121,7 @@ class Detalle_alumno_en_curso(models.Model):
         verbose_name_plural = 'Detalle de alumno en un curso'
 
     def __str__(self):
-        return f'Curso: {self.curso} | Alumno: {self.alumno}'
+        return f'Curso: {self.curso} | Alumno: {self.usuario}'
     
     
 class Asistencia(models.Model):

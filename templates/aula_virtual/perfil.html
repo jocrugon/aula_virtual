@@ -8,20 +8,55 @@
 {% endblock extracss %}
 
 {% block body%}
-    <h1>{{ user.username}}</h1>
-    <h1>{{ user.email}}</h1>
-    <h1>{{ user.last_login}}</h1>
-    <h1>{{ user.date_joined}}</h1>
-    <h2>
-        {{ docentes.persona.nombre }} 
-        {{ docentes.persona.apellido_paterno }}
-        {{ docentes.persona.apellido_materno }}
-    </h2>
-    <h2>
-        {{ docentes.persona.dni }}
 
-    </h2>
-    <h2> {{ docentes.persona.celular }}</h2> 
-    <h2> {{ docentes.persona.genero }}</h2> 
-    <h2> {{docentes.persona.fecha_nacimiento }}</h2> 
+    <div class="contenedor-perfil" >
+        <div class="contenedor-datos" >
+            <div class="contenedor-dato">
+                <h3>Usuario: </h3>
+                <p>{{ user.username}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Correo: </h3>
+                <p>{{ user.email}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>DNI: </h3>
+                <p>{{ personas.dni}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Género: </h3>
+                <p>{{ personas.genero}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Fecha Nacimiento: </h3>
+                <p>{{ personas.fecha_nacimiento}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Número celular: </h3>
+                <p>{{ personas.celular}}</p>
+            </div>
+        </div>
+        <div class="contenedor-datos" >
+            <div class="contenedor-dato">
+                <h3>Nivel: </h3>
+                <p style="text-transform:capitalize;">{{ personas.nivel.nombre_nivel}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Grado: </h3>
+                <p>{{ personas.grado.nombre_grado}}°</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Sección: </h3>
+                <p style="text-transform:uppercase;" >"{{ personas.seccion.nombre_seccion}}"</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Fecha de creación: </h3>
+                <p>{{ user.date_joined}}</p>
+            </div>
+            <div class="contenedor-dato">
+                <h3>Último ingreso: </h3>
+                <p>{{ user.last_login}}</p>
+            </div>
+        </div>
+    </div>
 {% endblock body %}
