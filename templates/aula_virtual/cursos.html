@@ -8,5 +8,19 @@
 {% endblock extracss %}
 
 {% block body%}
-    <h1>hola desde cursos</h1>
+    <div class="contenedor-cursos">
+
+        <h2>Secundaria</h2>
+        <h3>2022</h3>
+
+        {% for curso in alumno_en_curso %}
+        <div class="contenedor-curso">
+            <h2>{{curso.curso.etiqueta}}-{{curso.curso.grado}}<span style="text-transform: uppercase;">{{curso.curso.seccion}}</span>-{{curso.curso.nombre_curso}}</h2>
+            <h3>{{curso.curso.periodo}}</h3>
+        </div>
+        {% endfor %}
+        
+
+    </div>
+
 {% endblock body %}

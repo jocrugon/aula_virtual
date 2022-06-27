@@ -7,16 +7,16 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 60px 100px;
 
 }
 
 .contenedor-datos{
-    margin: 60px 120px;
     border-style: dotted;
     color: #5CCCE6;
     padding: 0 30px;
     width: 350px;
-
+    margin: 30px;
 }
 
 .contenedor-dato{

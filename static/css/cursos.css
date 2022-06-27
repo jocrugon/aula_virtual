@@ -1,0 +1,15 @@
+body{
+    background-color: #ebebeb;
+}
+
+.contenedor-cursos{
+    margin: 60px 120px;
+
+}
+
+.contenedor-curso{
+    border-style: ridge;
+    border-color: black;
+    padding: 0 30px;
+    cursor: pointer;
+}

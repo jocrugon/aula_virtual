@@ -19,7 +19,11 @@ class Persona(ListView):
         qs = super(Persona, self).get_queryset()
         return qs.filter(id=self.kwargs.get('id')).first()
 
-
-def Cursos(request):
-    return render(request,'aula_virtual/cursos.html')
+class Cursos(ListView):
+    model = Detalle_alumno_en_curso
+    template_name = "aula_virtual/cursos.html"
+    context_object_name = 'alumno_en_curso'
+    
+    def get_queryset(self):
+        return Detalle_alumno_en_curso.objects.filter(usuario=self.request.resolver_match.kwargs['id'])
 
