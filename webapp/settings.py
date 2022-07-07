@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-sv#yk96&-(f5e8@+xm6l@!n@cn2e6ho5h1@-(%z=c4(k%9lf@#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'webapp.urls'
@@ -146,5 +147,16 @@ DATE_INPUT_FORMATS = ['%d-%m-%Y']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
-APPEND_SLASH=False
-trailing_slash=False
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TEMP = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL  = '/static/'
+
+os.makedirs(STATIC_TEMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
+
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'static'),
+    
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
