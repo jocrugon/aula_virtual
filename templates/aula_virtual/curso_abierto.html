@@ -1,0 +1,22 @@
+{% extends 'aula_virtual/menu.html' %}
+{% load static %}
+
+{% block titulo %}Cursos{% endblock %}
+
+{%block extracss %}
+    <link rel="stylesheet" href="{%static 'css/cursos.css'%}">
+{% endblock extracss %}
+
+{% block body%}
+<div class="contenedor-cursos">
+
+    {% for curso in curso_abierto %}
+        <div class="contenedor-curso" >
+            <h2>{{curso.contenido}}</h2>
+            <h3>{{curso.nombre_folder}}</h3>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock body %}

@@ -9,7 +9,6 @@ from .models import *
 class Bienvenida(TemplateView):
     template_name = "aula_virtual/bienvenida.html"
     
-
 class Persona(ListView):
     model = Persona
     template_name = "aula_virtual/perfil.html"
@@ -27,3 +26,10 @@ class Cursos(ListView):
     def get_queryset(self):
         return Detalle_alumno_en_curso.objects.filter(usuario=self.request.resolver_match.kwargs['id'])
 
+class CursoAbierto(ListView):
+    model = Carpeta
+    template_name = "aula_virtual/curso_abierto.html"
+    context_object_name = 'curso_abierto'
+    
+    def get_queryset(self):
+        return Carpeta.objects.filter(curso=self.request.resolver_match.kwargs['id'])

@@ -14,10 +14,12 @@
         <h3>2022</h3>
 
         {% for curso in alumno_en_curso %}
-        <div class="contenedor-curso">
-            <h2>{{curso.curso.etiqueta}}-{{curso.curso.grado}}<span style="text-transform: uppercase;">{{curso.curso.seccion}}</span>-{{curso.curso.nombre_curso}}</h2>
-            <h3>{{curso.curso.periodo}}</h3>
-        </div>
+        <a id="link "href="{% url 'curso_abierto' curso.curso.id%}" style="color: black;text-decoration: none;">
+            <div class="contenedor-curso" >
+                <h2>{{curso.curso.etiqueta}}-{{curso.curso.grado}}<span style="text-transform: uppercase;">{{curso.curso.seccion}}</span>-{{curso.curso.nombre_curso}}</h2>
+                <h3>{{curso.curso.periodo}}</h3>
+            </div>
+        </a>
         {% endfor %}
         
 
