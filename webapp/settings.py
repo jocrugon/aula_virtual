@@ -82,25 +82,23 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-""" DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '948900930',
-        'NAME': 'aula_virtual',
-        'OPTIONS':{
-            'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES'"
-        }
-    }
-} """
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'ec2-54-227-248-71.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'lqlumnbqxnwcmh',
+        'PASSWORD': '855973c7de74d1a253fca9a87e59f6562197e86c0558ad8497fc9cb7d56db1a3',
+        'NAME': 'def0ofbia0l9ok',
+
+    }
+}
+''' DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'mydatabase'
     }
-}
+} '''
 
 
 # Password validation
